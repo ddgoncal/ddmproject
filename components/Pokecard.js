@@ -6,7 +6,7 @@ function Pokecard(props) {
 
   return (
     <TouchableOpacity onPress={onPressPokecard}>
-      <View style={styles.poke_container}>
+      <View style={true ? styles.poke_container_two : styles.poke_container}>
         <Text style={styles.title}>{name}</Text>
         <Image style={styles.image} source={{uri: image}} />
         <Text style={styles.description}>Type: {type}</Text>
@@ -24,6 +24,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'center',
     backgroundColor: '#e5e5e5',
+  },
+  poke_container_two: {
+    width: 180,
+    height: 250,
+    borderRadius: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    alignSelf: 'center',
+    backgroundColor: '#f20000',
   },
   title: {
     alignSelf: 'center',

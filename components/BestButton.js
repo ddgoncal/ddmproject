@@ -19,7 +19,6 @@ const BestButton = ( props ) => {
       </TouchableOpacity>
     </>
   )
-
 }
 
 const styles = StyleSheet.create({

@@ -11,7 +11,7 @@ function Home() {
   const navigation = useNavigation();
 
   const onPressPokecard = () => {
-    navigation.navigate('About', {itemId: 80});
+    navigation.navigate('About');
   };
 
   const renderPokeData = () => {
