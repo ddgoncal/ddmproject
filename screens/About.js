@@ -1,82 +1,84 @@
 //import axios from 'axios';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Button, FlatList, ScrollView, Text, View} from 'react-native';
+import {Button, FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import Pokecard from '../components/Pokecard';
+import { useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 function About(params) {
-  console.log(params.itemId);
+  const counter = useSelector(state => state.counter.value);
   const [users, setUsers] = useState({});
-  const [created, setCreated] = useState(false);
-  const clearData = () => {
-    setUsers({});
-  };
+  const [dependencia, setdependencia] = useState(false);
+  console.log(params.itemId);
+  const post = {userId: 1, title: 'title', body: 'isto e um post'};
+
+  const fazFetchComDependencia = useCallback(() => {
+    if (dependencia) {
+      console.log('Executou');
+      fecthAxiosData();
+    }
+    console.log('Entra aqui na mesma');
+  }, [dependencia]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
-      setUsers(response.data);
-      console.log("Correu outra vez!");
-    });
-  }, []);
+    fazFetchComDependencia();
+  }, [fazFetchComDependencia]);
 
-  const onFetch = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
+  const clearData = () => {
+    setUsers({});
+    setdependencia(!dependencia);
+    fazFetchComDependencia();
+  };
+
+  const fecthAxiosData = () => {
+    axios
+      .get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        // eslint-disable-next-line eqeqeq
+        setUsers(response.data);
+      })
+      .catch(error => { console.log("deu erro") });
+  };
+
+  const fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        return response.json();
+      })
       .then(data => {
         setUsers(data);
-      });
-  };
-
-  const onAxiosFetch = () => {
-    axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
-      setUsers(response.data);
-    });
-  };
-
-  const createPost = () => {
-    const post = {userid: 1, title: 'Nosso post', body: 'Isto é a mensagem'};
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', {post})
-      .then(response => {
-        if (response.status == 201) {
-          setUsers({});
-        };
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => {});
   };
 
-  const addCenas = () => {
-    setCreated(!created);
+  const renderItem = ({item}) => {
+    return <Pokecard name={item.username} type={item.email} />;
   };
-
-  const renderItem = ({ item }) => (
-    <Pokecard name={item.body} type={item.title} />
-  );
-
 
   return (
     <ScrollView>
+      <Text style={styles.text}>O meu counter: {counter}</Text>
       <Text>Isto e a nova pagina {params.itemId}</Text>
-      <Button onPress={onFetch} title="Fetch data" color="green" />
-      <Button onPress={onAxiosFetch} title="Axios fetch data" color="green" />
-      <Button onPress={clearData} title="Clear data" color="red" />
-      <Button onPress={createPost} title="create post" color="red" />
-      <Button onPress={addCenas} title="renderizacao condicional" color="red" />
+      <Button title="Fetch data" color="green" onPress={fetchData} />
+      <Button title="Axios data" color="green" onPress={fecthAxiosData} />
+      <Button title="Clear Data" color="blue" onPress={clearData} />
+
       <FlatList
-        data={users}
         renderItem={renderItem}
+        data={users}
         keyExtractor={item => item.id}
       />
-      {created && (
-        <View>
-          <Text>Funcionou!!!!!!</Text>
-          <Button onPress={createPost} title="create post" color="red" />
-        </View>
-      )}
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    marginTop: 30,
+    fontSize: 20,
+    alignSelf: 'center',
+  },
+});
 
 export default About;

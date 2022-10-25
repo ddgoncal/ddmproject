@@ -7,7 +7,7 @@ function Pokecard(props) {
   return (
     <TouchableOpacity onPress={onPressPokecard}>
       <View style={true ? styles.poke_container_two : styles.poke_container}>
-        <Text style={styles.title}>{name}</Text>
+        <Text className="titlo" style={styles.title}>{name}</Text>
         <Image style={styles.image} source={{uri: image}} />
         <Text style={styles.description}>Type: {type}</Text>
       </View>

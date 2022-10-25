@@ -4,9 +4,13 @@ import BestButton from '../components/BestButton';
 import Pokecard from '../components/Pokecard';
 import pokemonList from '../components/defaultprops';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 function Home() {
-  const [counter, setcounter] = useState(0);
+  const counter = useSelector(state => state.counter.value);
+  console.log(counter);
+  //const [counter, setcounter] = useState(0);
+
   const pokemonData = pokemonList.pokemon;
   const navigation = useNavigation();
 
@@ -37,14 +41,10 @@ function Home() {
         <View style={styles.buttons_container}>
           <BestButton
             texto="Incrementar"
-            setcounter={setcounter}
             isIncrement
-            counter={counter}
           />
           <BestButton
             texto="Decrementare"
-            setcounter={setcounter}
-            counter={counter}
           />
         </View>
         {renderPokeData()}
