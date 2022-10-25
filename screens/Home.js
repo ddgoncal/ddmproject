@@ -38,6 +38,7 @@ function Home() {
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Text style={styles.text}>O meu counter: {counter}</Text>
+        <Text style={styles.text}>Eu sou o Amadeu</Text>
         <View style={styles.buttons_container}>
           <BestButton
             texto="Incrementar"
