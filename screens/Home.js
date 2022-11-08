@@ -7,10 +7,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 function Home() {
-  const counter = useSelector(state => state.counter.value);
   console.log(counter);
-  //const [counter, setcounter] = useState(0);
 
+  const counter = useSelector(state => state.counter.value);
   const pokemonData = pokemonList.pokemon;
   const navigation = useNavigation();
 

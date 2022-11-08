@@ -10,15 +10,13 @@ function About(params) {
   const counter = useSelector(state => state.counter.value);
   const [users, setUsers] = useState({});
   const [dependencia, setdependencia] = useState(false);
-  console.log(params.itemId);
   const post = {userId: 1, title: 'title', body: 'isto e um post'};
 
   const fazFetchComDependencia = useCallback(() => {
     if (dependencia) {
-      console.log('Executou');
-      fecthAxiosData();
+      //fecthAxiosData();calculanrprimos
     }
-    console.log('Entra aqui na mesma');
+    console.log('Correu mas e ' + dependencia);
   }, [dependencia]);
 
   useEffect(() => {
