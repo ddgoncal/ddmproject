@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "382060196096",
+    "project_id": "ddmproject-f7392",
+    "storage_bucket": "ddmproject-f7392.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382060196096:android:c6fd91eca20b2aeb88c3e5",
+        "android_client_info": {
+          "package_name": "com.ddmproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382060196096-sk1b9hhvlpf3ri7ktckqlbd5sas42usq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHJRvhwsP20CBGeerlmp5nlLdisqd5Q_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382060196096-sk1b9hhvlpf3ri7ktckqlbd5sas42usq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "382060196096-c0veskldpleluid7jb0ink0o485qoani.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ddmproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
