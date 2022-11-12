@@ -17,9 +17,12 @@ const counterSlice = createSlice({
     incremet_by_amount: (state, value) => {
       state = state + value;
     },
+    set_value: (state, value) => {
+      state = value;
+    },
   },
 });
 
-export const {increment, decrement, incremet_by_amount} = counterSlice.actions;
+export const {increment, decrement, incremet_by_amount, set_value} = counterSlice.actions;
 
 export default counterSlice.reducer;
