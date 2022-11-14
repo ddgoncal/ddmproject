@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Alert, Button, TextInput, View } from 'react-native'
 import { firebase } from '@react-native-firebase/auth';
 
@@ -8,17 +7,21 @@ const Login = props => {
   const [password, setPassword] = useState('');
 
   const onSignIn = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(result => {
-        console.log(result);
-        Alert.alert('Success');
-      })
-      .catch(error => {
-        console.log(error);
-        Alert.alert('Error creating user');
-    });
+    if (email && password) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(result => {
+          console.log(result);
+          Alert.alert('Success');
+        })
+        .catch(error => {
+          console.log(error);
+          Alert.alert('Error creating user');
+        });
+    } else {
+      Alert.alert('Please enter email and password');
+    }
   };
 
   const LoginUser = () => {

@@ -1,26 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  email: 0,
+  email: "",
   password: null,
 };
 
-const counterSlice = createSlice({
-  name: 'count',
+const currentUserSlice = createSlice({
+  name: 'currentUser',
   initialState,
   reducers: {
-    changeEmail: state => {
-      state.email == "awasaas";
-    },
-    decrement: state => {
-      state.value -= 1;
-    },
-    incremet_by_amount: (state, value) => {
-      state = state + value;
+    updateUser: (state, value) => {
+      state.email == value;
     },
   },
 });
 
-export const {increment, decrement, incremet_by_amount} = counterSlice.actions;
+export const {updateUser} = currentUserSlice.actions;
 
-export default counterSlice.reducer;
+export default currentUserSlice.reducer;

@@ -1,13 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import {string, bool} from 'prop-types';
 import {Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '../reducers/counterSlice';
 
-const BestButton = ( props ) => {
-  console.log(props);
-  var {isIncrement, texto} = props;
-
+const BestButton = ({isIncrement, texto}) => {
   const dispatch = useDispatch();
   const counter = useSelector(state => state.counter);
   const [buttonText, setbuttonText] = useState(texto);
@@ -24,6 +22,15 @@ const BestButton = ( props ) => {
     </>
   )
 }
+
+BestButton.defaultProps = {
+  isIncrement: false,
+};
+
+BestButton.propTypes = {
+  isIncrement: bool,
+  texto: string.isRequired,
+};
 
 const styles = StyleSheet.create({
   button: {
