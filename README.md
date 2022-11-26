@@ -1,9 +1,9 @@
 #How to initialize project
 
-1.npm install
-2.cd android ./gradlew clean
-3.cd ..
-4.npm run android
+1.npm install_
+2.cd android ./gradlew clean_
+3.cd .._
+4.npm run android_
 
 
 
